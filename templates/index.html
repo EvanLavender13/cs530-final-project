@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Bingo
+{% endblock %}
+
+{% block JS %}
+{% endblock %}
+{% block content %}
+
+    <app/>
+
+    <script src="static/tags/app.tag" type="riot/tag"></script>
+    <script src="static/tags/navbar.tag" type="riot/tag"></script>
+    <script src="static/tags/splash.tag" type="riot/tag"></script>
+    <script src="static/tags/login.tag" type="riot/tag"></script>
+    <script src="static/tags/signup.tag" type="riot/tag"></script>
+    <script src="static/tags/dashboard.tag" type="riot/tag"></script>
+
+    <script src="static/tags/entries.tag" type="riot/tag"></script>
+    <script src="static/tags/entry-item.tag" type="riot/tag"></script>
+    <script src="static/tags/entry-list.tag" type="riot/tag"></script>
+    <script src="static/tags/entry-content.tag" type="riot/tag"></script>
+
+    <script src="static/tags/editor.tag" type="riot/tag"></script>
+
+    <script src="static/tags/summary.tag" type="riot/tag"></script>
+    <script src="static/tags/calendar.tag" type="riot/tag"></script>
+
+    <script src="static/tags/data-view.tag" type="riot/tag"></script>
+
+    <script src="static/services/AuthService.js"></script>
+    <script src="static/services/EntryService.js"></script>
+    <script src="static/services/SentimentService.js"></script>
+    <script src="static/services/CalendarService.js"></script>
+    <script src="static/services/DataService.js"></script>
+
+    <script>
+        var authService = new AuthService()
+        var entryService = new EntryService()
+        var sentimentService = new SentimentService()
+        var calendarService = new CalendarService()
+        var dataService = new DataService()
+
+        riot.mount("app", authService, entryService, sentimentService, calendarService, dataService)
+    </script>
+
+{% endblock %}
