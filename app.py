@@ -15,7 +15,7 @@ bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 nlp = NLP()
 
-from models import User, Entry
+from models import User, Entry, SentimentData
 
 
 @app.route("/")
@@ -123,8 +123,13 @@ def entry_add():
     if session["logged_in"]:
         json_data = request.get_json()
 
+        content = json_data["content"]
+        sentiment = nlp.analyze_document(content)
+        sentiment_data = SentimentData(sentiment=sentiment,
+                                       is_total=True)
+
         entry = Entry(user_id=session["user_id"], year=json_data["year"], month=json_data["month"],
-                      day=json_data["day"], content=json_data["content"])
+                      day=json_data["day"], content=content, sentiment_data=[sentiment_data])
 
         try:
             db.session.add(entry)
