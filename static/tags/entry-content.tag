@@ -4,7 +4,7 @@
         <virtual if={ content }>
 
             <div class="buttons is-centered">
-                <span class="button is-text" onclick={clear}>Clear</span>
+                <span class="button is-text" onclick={clear}>Clear Sentiment</span>
                 <span class="button is-text" onclick={getDocument}>Document</span>
                 <span class="button is-text" onclick={getParagraph}>Paragraph</span>
                 <span class="button is-text" onclick={getSentence}>Sentence</span>

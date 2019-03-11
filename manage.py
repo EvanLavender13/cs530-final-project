@@ -101,7 +101,15 @@ def create_data():
                 paragraph = ""
 
                 for sent in range(10):
-                    if random.uniform(0, 1) < 0.75:
+                    chance = 0.25
+
+                    if month == 1:
+                        chance = 0.95
+
+                    if month in [2, 6, 7, 11, 12]:
+                        chance = 0.65
+
+                    if random.uniform(0, 1) < chance:
                         sentence = random.choice(negative)
                     else:
                         sentence = random.choice(positive)

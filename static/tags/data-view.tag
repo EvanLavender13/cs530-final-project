@@ -27,6 +27,14 @@
             </div>
         </div>
 
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <!-- Any other Bulma elements you want -->
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
     </virtual>
 
     <script>
@@ -46,26 +54,26 @@
         self.wordDataSets = {}
         self.tempDataSets = [{
             label: "Compound Avg.",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            borderColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0.25)",
+            borderColor: "rgba(0, 0, 0, 0.25)",
             data: null,
-            fill: false
+            fill: true
         }, {
             label: "Positive Avg.",
-            backgroundColor: "rgba(0, 255, 0, 0.5)",
-            borderColor: "rgba(0, 255, 0, 0.5)",
+            backgroundColor: "rgba(0, 255, 0, 0.75)",
+            borderColor: "rgba(0, 255, 0, 0.75)",
             data: null,
             fill: false
         }, {
             label: "Neutral Avg.",
-            backgroundColor: "rgba(0, 0, 255, 0.5)",
-            borderColor: "rgba(0, 0, 255, 0.5)",
+            backgroundColor: "rgba(0, 0, 255, 0.75)",
+            borderColor: "rgba(0, 0, 255, 0.75)",
             data: null,
             fill: false
         }, {
             label: "Negative Avg.",
-            backgroundColor: "rgba(255, 0, 0, 0.5)",
-            borderColor: "rgba(255, 0, 0, 0.5)",
+            backgroundColor: "rgba(255, 0, 0, 0.75)",
+            borderColor: "rgba(255, 0, 0, 0.75)",
             data: null,
             fill: false
         }]
@@ -119,10 +127,10 @@
 
             self.totalDataSets = [{
                 label: "Compound Avg.",
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                borderColor: "rgba(0, 0, 0, 0.5)",
+                backgroundColor: "rgba(0, 0, 0, 0.25)",
+                borderColor: "rgba(0, 0, 0, 0.25)",
                 data: self.compoundData,
-                fill: false
+                fill: true
             }, {
                 label: "Positive Avg.",
                 backgroundColor: "rgba(0, 255, 0, 0.5)",
