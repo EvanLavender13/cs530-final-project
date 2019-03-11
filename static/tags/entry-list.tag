@@ -3,18 +3,18 @@
     <aside class="menu">
 
         <p class="menu-label">Year</p>
-        <ul class="menu-list">
+        <ul id="years" class="menu-list">
             <li each={ years }><a href="#dash/entries/{ year }">{ year }</a></li>
         </ul>
 
         <p class="menu-label">Month</p>
-        <ul class="menu-list">
+        <ul id="months" class="menu-list">
             <li each={ months }><a href="#dash/entries/{ years[0].year }/{ month }">{ month }</a>
             </li>
         </ul>
 
         <p class="menu-label">Day</p>
-        <ul class="menu-list">
+        <ul id="days" class="menu-list">
             <li each={ days }><a href="#dash/entries/{ years[0].year }/{ months[0].month }/{ day }">{ day }</a></li>
         </ul>
 
@@ -58,5 +58,11 @@
         })
 
     </script>
+
+    <style>
+        li {
+            display: inline-block;
+        }
+    </style>
 
 </entry-list>

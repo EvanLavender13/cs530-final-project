@@ -44,6 +44,31 @@
 
         self.totalDataSets = []
         self.wordDataSets = {}
+        self.tempDataSets = [{
+            label: "Compound Avg.",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            borderColor: "rgba(0, 0, 0, 0.5)",
+            data: null,
+            fill: false
+        }, {
+            label: "Positive Avg.",
+            backgroundColor: "rgba(0, 255, 0, 0.5)",
+            borderColor: "rgba(0, 255, 0, 0.5)",
+            data: null,
+            fill: false
+        }, {
+            label: "Neutral Avg.",
+            backgroundColor: "rgba(0, 0, 255, 0.5)",
+            borderColor: "rgba(0, 0, 255, 0.5)",
+            data: null,
+            fill: false
+        }, {
+            label: "Negative Avg.",
+            backgroundColor: "rgba(255, 0, 0, 0.5)",
+            borderColor: "rgba(255, 0, 0, 0.5)",
+            data: null,
+            fill: false
+        }]
 
         self.compoundData = []
         self.positiveData = []
@@ -118,12 +143,17 @@
                 fill: false
             }]
 
+            self.tempDataSets[0].data = self.totalDataSets[0].data
+            self.tempDataSets[1].data = self.totalDataSets[1].data
+            self.tempDataSets[2].data = self.totalDataSets[2].data
+            self.tempDataSets[3].data = self.totalDataSets[3].data
+
             var ctx = document.getElementById("myChart").getContext("2d");
             self.chart = new Chart(ctx, {
                 type: "line",
                 data: {
                     labels: labels,
-                    datasets: self.totalDataSets
+                    datasets: self.tempDataSets
                 },
                 options: null
             });
@@ -172,8 +202,6 @@
                 })
             })
 
-            console.log(self.wordDataSets)
-
             self.update()
         })
 
@@ -181,7 +209,11 @@
             var id = event.target.id
 
             if (id === "total") {
-                self.chart.data.datasets = self.totalDataSets
+                console.log("QWEQWE")
+                self.chart.data.datasets[0].data = self.totalDataSets[0].data
+                self.chart.data.datasets[1].data = self.totalDataSets[1].data
+                self.chart.data.datasets[2].data = self.totalDataSets[2].data
+                self.chart.data.datasets[3].data = self.totalDataSets[3].data
             } else {
                 var dataSet = self.wordDataSets[id]
 
@@ -189,6 +221,7 @@
                 self.chart.data.datasets[1].data = dataSet["positive"]
                 self.chart.data.datasets[2].data = dataSet["neutral"]
                 self.chart.data.datasets[3].data = dataSet["negative"]
+                //self.chart.data.datasets = self.tempDataSets
             }
 
 

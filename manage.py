@@ -47,10 +47,15 @@ def create_data():
     user = User.query.get(1)
 
     word1 = SentimentWord("movie")
-    word2 = SentimentWord("movies")
-    word3 = SentimentWord("television")
+    word2 = SentimentWord("bad")
+    word3 = SentimentWord("hate")
     word4 = SentimentWord("person")
     word5 = SentimentWord("people")
+    word6 = SentimentWord("food")
+    word7 = SentimentWord("actor")
+    word8 = SentimentWord("meal")
+    word9 = SentimentWord("happy")
+    word10 = SentimentWord("good")
 
     def is_word_in_sentence(sentence):
         if word1.word in sentence:
@@ -63,12 +68,27 @@ def create_data():
             return word4
         elif word5.word in sentence:
             return word5
+        if word6.word in sentence:
+            return word6
+        elif word7.word in sentence:
+            return word7
+        elif word8.word in sentence:
+            return word8
+        elif word9.word in sentence:
+            return word9
+        elif word10.word in sentence:
+            return word10
 
     db.session.add(word1)
     db.session.add(word2)
     db.session.add(word3)
     db.session.add(word4)
     db.session.add(word5)
+    db.session.add(word6)
+    db.session.add(word7)
+    db.session.add(word8)
+    db.session.add(word9)
+    db.session.add(word10)
     db.session.commit()
 
     positive, negative = random_data.load_files()
@@ -81,7 +101,7 @@ def create_data():
                 paragraph = ""
 
                 for sent in range(10):
-                    if random.uniform(0, 1) < 0.5:
+                    if random.uniform(0, 1) < 0.75:
                         sentence = random.choice(negative)
                     else:
                         sentence = random.choice(positive)

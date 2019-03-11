@@ -59,6 +59,7 @@ function SentimentService() {
         var r = 0
         var g = 0
         var b = 0
+        var a = 0
 
         /*
         #. positive sentiment: compound score >= 0.05
@@ -70,25 +71,30 @@ function SentimentService() {
         if (comp >= 0.05) {
             // positive
             g = 255 * (comp)
+            a = comp * sentiment["pos"]
         } else if (comp > -0.05 && comp < 0.05) {
             // neutral
             b = 255 * sentiment["neu"]
 
             if (comp < 0) {
                 r = 255 * comp
+                a = comp * sentiment["pos"]
             } else {
                 g = 255 * Math.abs(comp)
+                a = Math.abs(comp) * sentiment["neg"]
             }
         } else if (comp <= -0.05) {
             // negative
             r = 255 * (Math.abs(comp))
+            a = Math.abs(comp) * sentiment["neg"]
         }
 
         r = self.norm(r, 0, 255)
         g = self.norm(g, 0, 255)
         b = self.norm(b, 0, 255)
+        a = self.norm(a * 1.5, 0, 1)
 
-        return "rgba(" + r + "," + g + "," + b + ", 0.5)"
+        return "rgba(" + r + "," + g + "," + b + "," + a + ")"
     }
 
     self.norm = function (value, min, max) {
@@ -101,15 +107,15 @@ function SentimentService() {
         var comp = sentiment["compound"]
         if (comp >= 0.05) {
             // positive
-            tooltip += "Positive"
+            tooltip += "+ Positive: " + sentiment["pos"]
         } else if (comp > -0.05 && comp < 0.05) {
             // neutral
-            tooltip += "Neutral"
+            tooltip += "= Neutral: " + sentiment["neu"]
 
 
         } else if (comp <= -0.05) {
             // negative
-            tooltip += "Negative"
+            tooltip += "- Negative: " + sentiment["neg"]
         }
 
         return tooltip

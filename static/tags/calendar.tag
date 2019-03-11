@@ -124,23 +124,22 @@
 
                 cell.style.backgroundColor = color
 
-                var tooltip = "Sentiment: "
+                var tooltip = ""
 
                 var comp = sentiment["compound"]
                 if (comp >= 0.05) {
                     // positive
-                    tooltip += "{ + Positive + }"
+                    tooltip += "+ Positive: " + sentiment["pos"]
                 } else if (comp > -0.05 && comp < 0.05) {
                     // neutral
-                    tooltip += "{ Neutral }\n"
+                    console.log("HELLO??")
+                    tooltip += "= Neutral: " + sentiment["neu"]
                 } else if (comp <= -0.05) {
                     // negative
-                    tooltip += "{ - Negative - }\n"
+                    tooltip += "- Negative: " + sentiment["neg"]
                 }
 
-                tooltip += "  [positive]: " + sentiment["pos"] + "\n"
-                tooltip += "  [neutral]: " + sentiment["neu"] + "\n"
-                tooltip += "  [negative]: " + sentiment["neg"] + "\n"
+                console.log(comp + " " + tooltip)
 
                 cell.setAttribute("data-tooltip", tooltip)
             })
