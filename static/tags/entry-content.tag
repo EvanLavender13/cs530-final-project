@@ -4,10 +4,11 @@
         <virtual if={ content }>
 
             <div class="buttons is-centered">
+                <span class="button is-text" onclick={clear}>Clear</span>
                 <span class="button is-text" onclick={getDocument}>Document</span>
                 <span class="button is-text" onclick={getParagraph}>Paragraph</span>
                 <span class="button is-text" onclick={getSentence}>Sentence</span>
-                <span class="button is-text" onclick={getNounsAndAdjectives}>Nouns and Adjectives</span>
+                <span class="button is-text" onclick={getNounsAndAdjectives}>Words</span>
             </div>
 
             <p id="context" class="context">{ content }</p>
@@ -131,6 +132,10 @@
                 })
             })
         })
+
+        self.clear = function() {
+            instance.unmark()
+        }
 
         self.getDocument = function () {
             sentimentService.getDocument(self.content)

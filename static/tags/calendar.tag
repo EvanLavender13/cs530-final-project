@@ -132,7 +132,6 @@
                     tooltip += "+ Positive: " + sentiment["pos"]
                 } else if (comp > -0.05 && comp < 0.05) {
                     // neutral
-                    console.log("HELLO??")
                     tooltip += "= Neutral: " + sentiment["neu"]
                 } else if (comp <= -0.05) {
                     // negative

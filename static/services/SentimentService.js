@@ -56,9 +56,9 @@ function SentimentService() {
     }
 
     self.getColorFromSentiment = function (sentiment) {
-        var r = 0
-        var g = 0
-        var b = 0
+        var r = 1
+        var g = 1
+        var b = 1
         var a = 0
 
         /*
@@ -92,7 +92,7 @@ function SentimentService() {
         r = self.norm(r, 0, 255)
         g = self.norm(g, 0, 255)
         b = self.norm(b, 0, 255)
-        a = self.norm(a * 1.5, 0, 1)
+        a = self.norm(a * 2, 0, 1)
 
         return "rgba(" + r + "," + g + "," + b + "," + a + ")"
     }

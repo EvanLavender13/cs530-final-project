@@ -48,7 +48,7 @@ class NLP:
 
             for token in sentence:
                 if token.text not in excluded:
-                    if token.pos_ in "NOUN PROPN ADJ":
+                    if token.pos_ in "NOUN PROPN ADJ VERB":
                         words[token.text].append(sentiment)
 
         return words
